@@ -49,27 +49,6 @@
   gap: 1rem;
 }
 
-.vite-promo .link {
-  display: inline-block;
-  padding: 0.5rem 1.25rem;
-
-  font-weight: 500;
-  text-align: center;
-  white-space: nowrap;
-  color: rgba(255, 255, 255, 0.87);
-
-  background-color: #646cff;
-  border: 1px solid transparent;
-  border-radius: 1.25rem;
-  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
-}
-
-.vite-promo .link:hover,
-.vite-promo .link:focus {
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #747bff;
-}
-
 .vite-promo .thumb {
   position: relative;
 }
@@ -89,4 +68,55 @@
   border-radius: 50%;
   background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
   filter: blur(4.5rem);
+}
+
+.vite-promo .link {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  font-size: 18px;
+  white-space: nowrap;
+  color: rgba(251, 251, 251, 1);
+  position: relative;
+  appearance: none;
+  background: rgba(27, 65, 75, 1);
+  padding: 16px 40px;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-radius: 15px;
+
+  span {
+    position: relative;
+    pointer-events: none;
+    transition: color 0.3s ease;
+    z-index: 2;
+  }
+
+  &::before {
+    --size: 0;
+
+    content: '';
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: radial-gradient(
+      circle closest-side,
+      rgba(251, 251, 251, 1),
+      transparent
+    );
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+    z-index: 1;
+  }
+  &:hover span {
+    color: rgba(27, 65, 75, 1); /* Новий колір тексту при наведенні */
+  }
+  &:hover::before {
+    --size: 400px;
+  }
 }
